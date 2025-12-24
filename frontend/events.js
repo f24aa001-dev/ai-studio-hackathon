@@ -37,7 +37,7 @@ function displayEvents(events) {
         eventElement.className = 'event-item';
         eventElement.dataset.area = event.area;
 
-        // 日付文字列 (YYYY-MM-DD) をDateオブジェクトに変換して月・日を取得
+        // イベント日付 (YYYY-MM-DD) から月と日を取得
         const date = new Date(event.event_date);
         const month = date.getMonth() + 1;
         const day = date.getDate();
