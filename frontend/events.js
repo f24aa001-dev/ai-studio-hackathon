@@ -37,9 +37,10 @@ function displayEvents(events) {
         eventElement.className = 'event-item';
         eventElement.dataset.area = event.area;
 
-        // バグ: 日付をパースせずにそのまま表示している
-        const month = event.event_date;
-        const day = '';
+        // 日付文字列 (YYYY-MM-DD) をDateオブジェクトに変換して月・日を取得
+        const date = new Date(event.event_date);
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
 
         // エリア名を日本語に変換
         const areaNames = {
