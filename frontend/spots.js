@@ -165,10 +165,10 @@ function loadRanking(spots) {
         rankItem.className = `ranking-item ${index < 3 ? 'top3' : ''}`;
 
         // 星評価の表示を作成
-        // バグ: 星の計算ロジックが間違っている（Math.ceilを使うと計算がおかしくなる）
-        const fullStars = Math.ceil(spot.avg_rating);
+        // 満点★ + 半星☆ + 空☆ の合計が常に5個以内になるように計算
+        const fullStars = Math.floor(spot.avg_rating);
         const hasHalfStar = spot.avg_rating % 1 >= 0.5;
-        const emptyStars = 5 - fullStars;
+        const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
         const starsHtml = '★'.repeat(fullStars) + (hasHalfStar ? '☆' : '') + '☆'.repeat(emptyStars);
         const ratingDisplay = spot.review_count > 0 ? `<div style="color: #ffd700; font-size: 0.9rem;">${starsHtml} ${spot.avg_rating.toFixed(1)}</div>` : '<div style="color: #999; font-size: 0.9rem;">評価なし</div>';
 
