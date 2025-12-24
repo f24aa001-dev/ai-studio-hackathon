@@ -260,17 +260,14 @@ class APIClient {
 
 /**
  * 距離をフォーマットする（m → km変換）
- * return文が抜けている
  * @param {number} meters - メートル単位の距離
  * @returns {string} フォーマットされた距離文字列
  */
 function formatDistance(meters) {
     if (meters >= 1000) {
-        // バグ: return文がない
-        (meters / 1000).toFixed(1) + 'km';
+        return (meters / 1000).toFixed(1) + 'km';
     } else {
-        // バグ: return文がない
-        meters + 'm';
+        return meters + 'm';
     }
 }
 
